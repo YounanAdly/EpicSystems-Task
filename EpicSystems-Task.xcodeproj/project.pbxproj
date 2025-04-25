@@ -29,12 +29,27 @@
 		051EB26A2DBC387700CC9320 /* EpicSystems-TaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EpicSystems-TaskUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		051EB2502DBC387300CC9320 /* EpicSystems-Task */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "EpicSystems-Task";
-			sourceTree = "<group>";
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		051EB2982DBC3E6000CC9320 /* Exceptions for "EpicSystems-Task" folder in "EpicSystems-Task" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				EpicSystems_Task.xcdatamodeld,
+			);
+			target = 051EB24D2DBC387300CC9320 /* EpicSystems-Task */;
 		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		051EB2992DBC3E6000CC9320 /* Exceptions for "EpicSystems-Task" folder in "Compile Sources" phase from "EpicSystems-Task" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 051EB24A2DBC387300CC9320 /* Sources */;
+			membershipExceptions = (
+				EpicSystems_Task.xcdatamodeld,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
 		051EB2632DBC387700CC9320 /* EpicSystems-TaskTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "EpicSystems-TaskTests";
@@ -43,6 +58,15 @@
 		051EB26D2DBC387700CC9320 /* EpicSystems-TaskUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "EpicSystems-TaskUITests";
+			sourceTree = "<group>";
+		};
+		051EB2922DBC3E6000CC9320 /* EpicSystems-Task */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				051EB2982DBC3E6000CC9320 /* Exceptions for "EpicSystems-Task" folder in "EpicSystems-Task" target */,
+				051EB2992DBC3E6000CC9320 /* Exceptions for "EpicSystems-Task" folder in "Compile Sources" phase from "EpicSystems-Task" target */,
+			);
+			path = "EpicSystems-Task";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,7 +99,7 @@
 		051EB2452DBC387300CC9320 = {
 			isa = PBXGroup;
 			children = (
-				051EB2502DBC387300CC9320 /* EpicSystems-Task */,
+				051EB2922DBC3E6000CC9320 /* EpicSystems-Task */,
 				051EB2632DBC387700CC9320 /* EpicSystems-TaskTests */,
 				051EB26D2DBC387700CC9320 /* EpicSystems-TaskUITests */,
 				051EB24F2DBC387300CC9320 /* Products */,
@@ -108,7 +132,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				051EB2502DBC387300CC9320 /* EpicSystems-Task */,
+				051EB2922DBC3E6000CC9320 /* EpicSystems-Task */,
 			);
 			name = "EpicSystems-Task";
 			packageProductDependencies = (
