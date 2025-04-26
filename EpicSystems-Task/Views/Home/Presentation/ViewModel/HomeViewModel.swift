@@ -16,7 +16,7 @@ class HomeViewModel: HomeViewModelContract {
     @Published var errorMessage: String? = nil
     @Published var listOfPosts: [PostsResponse] = []
     @Published var databasePosts: [PostsResponse] = []
-    @Published var searchText: String = "" // << ✅ Add this
+    @Published var searchText: String = ""
 
     
     // MARK: - INIT
@@ -116,15 +116,7 @@ extension HomeViewModel{
     }
     
     
-    
-    
-    // MARK: - NAVIGATION VIEW TITLE
-    var navigationTitle: String {
-        Localizable.Home.navigationTitle.uppercased()
-    }
-}
-
-extension HomeViewModel {
+    // MARK: - FILTERD DATA TO ENABLE SEARCH
     var filteredPosts: [PostsResponse] {
         if searchText.isEmpty {
             return listOfPosts
@@ -134,4 +126,11 @@ extension HomeViewModel {
             }
         }
     }
+    
+    
+    // MARK: - NAVIGATION VIEW TITLE
+    var navigationTitle: String {
+        Localizable.Home.navigationTitle.uppercased()
+    }
 }
+
