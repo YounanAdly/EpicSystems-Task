@@ -53,55 +53,60 @@ extension HomeViewModel{
     }
     
     
+    
+    // MARK: - TOGGLE BUTTON TO SAVE & UNSAVED FROM DATABASE
     func toggleFavorite(_ post: PostsResponse) {
-        print("🟡 Toggling favorite for post ID: \(post.id)")
         shouldDisplayLoading = true
-        loadLocalPosts()
         if databasePosts.contains(where: { $0.id == post.id }) {
-            do {
-                try useCase.excuteDeletePost(post)
-                loadLocalPosts()
-            } catch {
-                print("Failed to delete post: \(error)")
-                errorMessage = "Failed to delete post: \(error.localizedDescription)"
-            }
+            deletePost(post)
         } else {
-            do {
-                try useCase.excuteSavePost(post)
-                loadLocalPosts()
-            } catch {
-                print("Failed to save post: \(error)")
-                errorMessage = "Failed to save post: \(error.localizedDescription)"
-            }
+            savePost(post)
         }
         shouldDisplayLoading = false
     }
     
     
+    // MARK: - DELETE POST FROM DATABASE
+    func deletePost(_ post: PostsResponse) {
+        do {
+            try useCase.excuteDeletePost(post)
+            loadLocalPosts()
+        } catch {
+            let message = String(format: Localizable.CoreData.failedToDeletePost, error.localizedDescription)
+            print(message)
+            errorMessage = message
+        }
+    }
+    
+    
+    // MARK: - SAVE POST INTO DATABASE
     func savePost(_ post: PostsResponse) {
         do {
             try useCase.excuteSavePost(post)
             loadLocalPosts()
         } catch {
-            print("Failed to save post: \(error)")
-            errorMessage = "Failed to save post: \(error.localizedDescription)"
+            let message = String(format: Localizable.CoreData.failedToSavePost, error.localizedDescription)
+            print(message)
+            errorMessage = message
         }
     }
     
+    
+    // MARK: - FETCH LOCAL DATABASE POSTS
     private func loadLocalPosts() {
         do {
             self.databasePosts = try useCase.excuteLocalPosts()
-            print("Fetched \(self.databasePosts.count) posts from Core Data")
-            for post in self.databasePosts {
-                print("📝 Post ID: \(post.id), Title: \(post.title)")
-            }
+            let message = String(format: Localizable.CoreData.fetchPostsFromCoreData, self.databasePosts.count)
+            print(message)
         } catch {
-            print("Failed to fetch posts: \(error.localizedDescription)")
+            let message = String(format: Localizable.CoreData.failedToFetchPosts, error.localizedDescription)
+            print(message)
             self.databasePosts = []
         }
     }
     
     
+    // MARK: - SWIPE TO REFRESH POSTS
     func refreshPosts()  {
         shouldDisplayLoading = true
         self.getPosts()

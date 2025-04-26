@@ -21,4 +21,11 @@ enum Localizable {
         static let okButton = "OK"
         static let noData = "No Data available."
     }
+    
+    enum CoreData {
+        static let fetchPostsFromCoreData = "Fetched %d posts from Core Data"
+        static let failedToFetchPosts = "Failed to fetch posts: %@"
+        static let failedToDeletePost = "Failed to delete post: %@"
+        static let failedToSavePost = "Failed to save post: %@"
+    }
 }
