@@ -120,16 +120,15 @@ EpicSystems-Task
 │   │       │   ├── HomeService.swift
 │   │       │   └── HomeUseCase.swift
 │   │       ├── Domain
-│   │       │   └── PostsResponse.swift
-│   │       ├── Interface
-│   │       │   ├── ViewModel
-│   │       │   │   └── HomeViewModelContract.swift
+│   │       │   ├── Interface
+│   │       │   │   └──ViewModel
+│   │       │   │      └── HomeViewModelContract.swift
 │   │       │   ├── Repository
-│   │       │   │   └── HomeRepositoryContract.swift
+│   │       │   │      └── HomeRepositoryContract.swift
 │   │       │   ├── Services
-│   │       │   │   └── HomeServiceContract.swift
+│   │       │   │      └── HomeServiceContract.swift
 │   │       │   └── UseCases
-│   │       │       └── HomeUseCaseContract.swift
+│   │       │          └── HomeUseCaseContract.swift
 │   │       ├── Models
 │   │       │   └── PostsResponse.swift
 │   │       ├── Presentation
@@ -143,8 +142,6 @@ EpicSystems-Task
 │   ├── EpicSystems-TaskTests
 │   └── EpicSystems-TaskUITests
 ```
-
-> **Note**: There are two `PostsResponse.swift` files (one in `Home/Domain` and one in `Home/Models`). This might be a duplication error. Consider consolidating them into a single file in `Home/Domain` and removing the duplicate to avoid confusion.
 
 ## 🤝 Contributing
 Contributions are welcome! To contribute:
