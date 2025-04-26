@@ -106,10 +106,10 @@ EpicSystems-Task
 │   │   │   └── CoreDataServiceContract.swift
 │   │   └── Networks
 │   │       ├── APIConstants
-│   │       │   └── BaseError.swift
+│   │       ├── BaseError.swift
 │   │       ├── HTTPMethod.swift
 │   │       ├── NetworkService
-│   │       │   └── NetworkServiceContract.swift
+│   │       │── NetworkServiceContract.swift
 │   │       └── RestRequest.swift
 │   ├── Views
 │   │   ├── FavoritePosts
