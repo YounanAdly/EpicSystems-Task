@@ -17,6 +17,9 @@ final class HomeRepository :HomeRepositoryContract {
     }
  
     // MARK: - REPOSITORIES METHODS
+    func getPosts() -> AnyPublisher<[PostsResponse], BaseError> {
+        service.getPosts()
+    }
     
 }
 

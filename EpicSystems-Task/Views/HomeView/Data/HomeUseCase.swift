@@ -15,4 +15,7 @@ final class HomeUseCase :HomeUseCaseContract {
     }
 
     // MARK: - USECASE METHODS
+    func excuteGetPosts() -> AnyPublisher<[PostsResponse], BaseError> {
+        repository.getPosts()
+    }
 }

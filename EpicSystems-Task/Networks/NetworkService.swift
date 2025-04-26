@@ -18,7 +18,7 @@ final class NetworkService : NetworkServiceContract{
     private init() {
         self.session = URLSession(configuration: .default)
         self.serviceQueue = DispatchQueue(
-            label: "kinetics.MedMark.service",
+            label: "EpicSystemsTask.service",
             qos: .userInteractive,
             attributes: .concurrent
         )
@@ -51,6 +51,7 @@ final class NetworkService : NetworkServiceContract{
             }
         }
         .receive(on: serviceQueue)
+        .retry(3)
         .eraseToAnyPublisher()
     }
 
@@ -110,21 +111,4 @@ final class NetworkService : NetworkServiceContract{
 
         return request
     }
-}
-
-class MockNetworkService: NetworkServiceContract {
-    
-    var result: AnyPublisher<Any, BaseError>!
-
-    func request<T>(
-        using request: RestRequest,
-        responseType: T.Type,
-        decoder: JSONDecoder
-    ) -> AnyPublisher<T, BaseError> where T: Decodable {
-        result
-            .compactMap { $0 as? T }
-            .eraseToAnyPublisher()
-    }
-    
-    
 }

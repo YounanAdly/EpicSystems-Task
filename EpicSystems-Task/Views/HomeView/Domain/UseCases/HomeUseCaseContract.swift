@@ -5,5 +5,5 @@ import Foundation
 import Combine
 
 protocol HomeUseCaseContract {
-    // Service logic here
+    func excuteGetPosts() -> AnyPublisher<[PostsResponse], BaseError>
 }

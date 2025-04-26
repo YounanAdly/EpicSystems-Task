@@ -15,5 +15,15 @@ final class HomeService :HomeServiceContract {
     }
     
     // MARK: - SERVICE METHODS
-    
+    func getPosts() -> AnyPublisher<[PostsResponse], BaseError> {
+        let request = RestRequest(
+            baseURL: APIConstants.baseURL,
+            path: APIConstants.Endpoints.getPosts,
+            method: .get,
+            headers: APIConstants.Headers.json,
+            parameters: nil)
+        
+         return service
+             .request(using: request, responseType: [PostsResponse].self)
+     }
 }
