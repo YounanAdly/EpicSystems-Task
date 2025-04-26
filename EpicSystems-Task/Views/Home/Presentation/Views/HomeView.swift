@@ -7,6 +7,7 @@ import SwiftUI
 struct HomeView<ViewModel: HomeViewModelContract>: View {
     
     @StateObject var viewModel: ViewModel
+    @State private var isFavoriteViewActive = false
     
     var body: some View {
         content
@@ -20,23 +21,31 @@ struct HomeView<ViewModel: HomeViewModelContract>: View {
 
 
 extension HomeView {
-    
     // MARK: - Main Navigation View
     var content: some View {
-        NavigationView {
+        NavigationStack {
             listOfPosts
                 .navigationTitle(viewModel.navigationTitle)
                 .navigationBarTitleDisplayMode(.automatic)
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            // Open Favorite View
-                        }) {
-                            Image(systemName: "heart.fill")
-                                .foregroundStyle(Color.red)
-                        }
-                    }
+                    ToolbarItem(placement: .navigationBarTrailing) { favoriteButton }
                 }
+                .navigationDestination(isPresented: $isFavoriteViewActive) {
+                    FavoritePostsView(viewModel: viewModel)
+                }
+        }
+    }
+    
+    
+    
+    // MARK: - BUTTON TO SHOW POSTS ADDED IN FAVORITE
+    @ViewBuilder
+    var favoriteButton: some View {
+        Button(action: {
+            isFavoriteViewActive = true
+        }) {
+            Image(systemName: "heart.fill")
+                .foregroundStyle(Color.red)
         }
     }
     

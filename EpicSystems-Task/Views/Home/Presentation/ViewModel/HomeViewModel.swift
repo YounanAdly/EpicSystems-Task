@@ -28,6 +28,7 @@ class HomeViewModel: HomeViewModelContract {
     
 }
 
+
 extension HomeViewModel{
     
     // MARK: - API - FETCH POSTS LIST
@@ -51,7 +52,6 @@ extension HomeViewModel{
             }
             .store(in: &subscriptions)
     }
-    
     
     
     // MARK: - TOGGLE BUTTON TO SAVE & UNSAVED FROM DATABASE
@@ -116,6 +116,6 @@ extension HomeViewModel{
     
     // MARK: - NAVIGATION VIEW TITLE
     var navigationTitle: String {
-        Localizable.Home.listOfPosts.uppercased()
+        Localizable.Home.navigationTitle.uppercased()
     }
 }

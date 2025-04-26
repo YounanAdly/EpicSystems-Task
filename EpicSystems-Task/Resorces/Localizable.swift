@@ -6,8 +6,13 @@
 //
 
 enum Localizable {
+    
+    enum Favorites {
+        static let navigationTitle = "Favorites"
+    }
+    
     enum Home {
-        static let listOfPosts = "list of posts"
+        static let navigationTitle = "list of posts"
     }
     
     enum APIS {
@@ -27,5 +32,9 @@ enum Localizable {
         static let failedToFetchPosts = "Failed to fetch posts: %@"
         static let failedToDeletePost = "Failed to delete post: %@"
         static let failedToSavePost = "Failed to save post: %@"
+    }
+    
+    enum Post {
+        static let userId = "User ID"
     }
 }
