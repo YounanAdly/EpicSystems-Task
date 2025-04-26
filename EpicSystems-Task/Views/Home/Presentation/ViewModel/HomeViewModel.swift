@@ -16,6 +16,8 @@ class HomeViewModel: HomeViewModelContract {
     @Published var errorMessage: String? = nil
     @Published var listOfPosts: [PostsResponse] = []
     @Published var databasePosts: [PostsResponse] = []
+    @Published var searchText: String = "" // << ✅ Add this
+
     
     // MARK: - INIT
     init(
@@ -114,8 +116,22 @@ extension HomeViewModel{
     }
     
     
+    
+    
     // MARK: - NAVIGATION VIEW TITLE
     var navigationTitle: String {
         Localizable.Home.navigationTitle.uppercased()
+    }
+}
+
+extension HomeViewModel {
+    var filteredPosts: [PostsResponse] {
+        if searchText.isEmpty {
+            return listOfPosts
+        } else {
+            return listOfPosts.filter { post in
+                post.title.localizedCaseInsensitiveContains(searchText)
+            }
+        }
     }
 }

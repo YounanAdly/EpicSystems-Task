@@ -24,15 +24,16 @@ extension HomeView {
     // MARK: - Main Navigation View
     var content: some View {
         NavigationStack {
-            listOfPosts
-                .navigationTitle(viewModel.navigationTitle)
-                .navigationBarTitleDisplayMode(.automatic)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) { favoriteButton }
-                }
-                .navigationDestination(isPresented: $isFavoriteViewActive) {
-                    FavoritePostsView(viewModel: viewModel)
-                }
+            VStack {
+                searchBar
+                listOfPosts
+            }
+            .navigationTitle(viewModel.navigationTitle)
+            .navigationBarTitleDisplayMode(.automatic)
+            .toolbar { ToolbarItem(placement: .navigationBarTrailing) { favoriteButton } }
+            .navigationDestination(isPresented: $isFavoriteViewActive) {
+                FavoritePostsView(viewModel: viewModel)
+            }
         }
     }
     
@@ -50,13 +51,20 @@ extension HomeView {
     }
     
     
+    // MARK: - SEARCH IN POSTS VIEW
+    @ViewBuilder
+    var searchBar: some View {
+        SearchBar(text: $viewModel.searchText)
+    }
     
-    // MARK: - List Of Posts
+    
+    
+    // MARK: - LIST OF POSTS VIEW
     var listOfPosts: some View {
         ScrollableContent(
             orientation: .vertical,
             showsIndicators: false,
-            items: viewModel.listOfPosts) { post in
+            items: viewModel.filteredPosts) { post in
                 PostItemView(
                     post: post,
                     isSaved: viewModel.databasePosts.contains(where: { $0.id == post.id }),
@@ -65,12 +73,12 @@ extension HomeView {
                 .opacity(viewModel.shouldDisplayLoading ? 0 : 1)
             }
             .padding(.top, 12)
-            .animatedContent(value: viewModel.listOfPosts)
+            .animatedContent(value: viewModel.filteredPosts)
     }
     
     
     
-    // MARK: - No Data Placeholder
+    // MARK: - NO DATA PLACEHOLDER
     var emptyStateOverlay: some View {
         EmptyPlaceholderView(
             itemCount: viewModel.listOfPosts.count,

@@ -18,6 +18,8 @@ protocol HomeViewModelOutput: ObservableObject {
     var navigationTitle: String { get }
     var shouldDisplayLoading: Bool { get }
     var listOfPosts: [PostsResponse] { get }
+    var filteredPosts: [PostsResponse] { get }
     var databasePosts: [PostsResponse] { get }
     var errorMessage: String? { get set }
+    var searchText: String { get set }
 }

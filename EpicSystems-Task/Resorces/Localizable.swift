@@ -36,5 +36,8 @@ enum Localizable {
     
     enum Post {
         static let userId = "User ID"
+        static let searchPlaceHolder = "Search posts..."
     }
+    
+    
 }
