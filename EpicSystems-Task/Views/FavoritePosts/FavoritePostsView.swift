@@ -13,6 +13,7 @@ struct FavoritePostsView<ViewModel: HomeViewModelContract>: View {
     
     var body: some View {
         listOfPosts
+            .overlay(emptyStateOverlay)
             .navigationTitle(Localizable.Favorites.navigationTitle)
             .navigationBarTitleDisplayMode(.inline)
     }
@@ -33,6 +34,15 @@ struct FavoritePostsView<ViewModel: HomeViewModelContract>: View {
             }
             .padding(.top, 12)
             .animatedContent(value: viewModel.databasePosts)
-
+    }
+    
+    
+    // MARK: - NO DATA PLACEHOLDER
+    var emptyStateOverlay: some View {
+        EmptyPlaceholderView(
+            itemCount: viewModel.databasePosts.count,
+            message: Localizable.Alert.noData
+        )
+        .opacity(viewModel.shouldDisplayLoading ? 0 : 1)
     }
 }
