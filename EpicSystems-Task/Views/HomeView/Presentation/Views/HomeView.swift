@@ -27,7 +27,16 @@ extension HomeView {
             listOfPosts
                 .navigationTitle(viewModel.navigationTitle)
                 .navigationBarTitleDisplayMode(.automatic)
-            
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            // Open Favorite View
+                        }) {
+                            Image(systemName: "heart.fill")
+                                .foregroundStyle(Color.red)
+                        }
+                    }
+                }
         }
     }
     
@@ -39,8 +48,12 @@ extension HomeView {
             orientation: .vertical,
             showsIndicators: false,
             items: viewModel.listOfPosts) { post in
-                PostItemView(post: post)
-                    .opacity(viewModel.shouldDisplayLoading ? 0 : 1)
+                PostItemView(
+                    post: post,
+                    isSaved: viewModel.databasePosts.contains(where: { $0.id == post.id }),
+                    saveAction: { post in viewModel.toggleFavorite(post) }
+                )
+                .opacity(viewModel.shouldDisplayLoading ? 0 : 1)
             }
             .padding(.top, 12)
             .animatedContent(value: viewModel.listOfPosts)

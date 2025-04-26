@@ -4,26 +4,36 @@
 //
 //  Created by Younan Adly on 26/04/2025.
 //
+
 import SwiftUI
 
 struct PostItemView: View {
-    var post: PostsResponse
-    
-    init(post: PostsResponse) {
-        self.post = post
-    }
+    let post: PostsResponse
+    let isSaved: Bool // Indicates if the post is already saved
+    let saveAction: (PostsResponse) -> Void // Action to save the post
     
     var body: some View {
-        VStack(alignment:.leading) {
+        VStack(alignment: .leading) {
             HStack {
                 Image(systemName: "person.circle")
                     .resizable()
                     .scaledToFit()
-                    .frame(width:24,height: 24)
+                    .frame(width: 24, height: 24)
                 
                 Text("User ID: \(post.userId)")
                     .font(.body)
                     .foregroundColor(.secondary)
+                
+                Spacer()
+                
+                Button(action: {
+                    saveAction(post) // Call the save action when the button is pressed
+                }) {
+                    Image(systemName: isSaved ? "heart.fill" : "heart")
+                        .foregroundColor(isSaved ? .red : .gray)
+                        .frame(width: 24, height: 24)
+                }
+                .buttonStyle(.plain)
             }
             
             Text(post.title)
@@ -43,5 +53,4 @@ struct PostItemView: View {
             removal: .scale.combined(with: .opacity)
         ))
     }
-    
 }
