@@ -131,8 +131,6 @@ EpicSystems-Task
 │   │       │   └── UseCases
 │   │       │       └── HomeUseCaseContract.swift
 │   │       ├── Models
-│   │       │   ├── Post+CoreDataClass.swift
-│   │       │   ├── Post+CoreDataProperties.swift
 │   │       │   └── PostsResponse.swift
 │   │       ├── Presentation
 │   │       │   ├── ViewModel
@@ -158,9 +156,6 @@ Contributions are welcome! To contribute:
 5. Open a Pull Request with a detailed description of your changes.
 
 Please ensure your code follows Swift best practices and includes appropriate tests.
-
-## 📜 License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## 📬 Contact
 For questions or feedback, feel free to reach out:
