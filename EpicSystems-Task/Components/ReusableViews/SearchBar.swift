@@ -18,11 +18,6 @@ struct SearchBar: View {
             TextField(Localizable.Post.searchPlaceHolder, text: $text)
                 .textFieldStyle(.plain)
                 .autocorrectionDisabled()
-                .onChange(of: text) { _, _ in
-                    withAnimation(.easeInOut(duration: 0.25)) {
-                        // Animation triggered when text changes
-                    }
-                }
         }
         .padding(12)
         .background(Color(.systemGray6))
