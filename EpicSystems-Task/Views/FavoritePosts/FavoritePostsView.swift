@@ -32,6 +32,7 @@ struct FavoritePostsView<ViewModel: HomeViewModelContract>: View {
                 .opacity(viewModel.shouldDisplayLoading ? 0 : 1)
             }
             .padding(.top, 12)
-            .animatedContent(value: viewModel.listOfPosts)
+            .animatedContent(value: viewModel.databasePosts)
+
     }
 }
