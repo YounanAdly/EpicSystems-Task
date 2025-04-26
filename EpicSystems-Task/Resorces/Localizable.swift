@@ -19,5 +19,6 @@ enum Localizable {
         static let errorTitle = "Error"
         static let unknownError = "An unknown error occurred"
         static let okButton = "OK"
+        static let noData = "No Data available."
     }
 }

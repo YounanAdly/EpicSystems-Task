@@ -5,11 +5,11 @@
 //  Created by Younan Adly on 26/04/2025.
 //
 
-struct PostsResponse: Codable,Identifiable {
-    let userId: Int?
+struct PostsResponse: Codable,Identifiable,Equatable {
+    let userId: Int
     let id: Int
-    let title: String?
-    let body: String?
+    let title: String
+    let body: String
     
     enum CodingKeys: String, CodingKey {
         case userId = "userId"

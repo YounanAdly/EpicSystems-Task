@@ -22,16 +22,13 @@ class HomeViewModel: HomeViewModelContract {
     ) {
         self.useCase = useCase
         self.subscriptions = .init()
-        self.getPosts()
     }
     
 }
 
 extension HomeViewModel{
-    var navigationTitle: String {
-        Localizable.Home.listOfPosts.uppercased()
-    }
     
+    // MARK: - API - FETCH POSTS LIST
     func getPosts() {
         useCase.excuteGetPosts()
             .receive(on: DispatchQueue.main)
@@ -51,5 +48,11 @@ extension HomeViewModel{
                 self.shouldDisplayLoading = false
             }
             .store(in: &subscriptions)
+    }
+    
+    
+    // MARK: - NAVIGATION VIEW TITLE
+    var navigationTitle: String {
+        Localizable.Home.listOfPosts.uppercased()
     }
 }
