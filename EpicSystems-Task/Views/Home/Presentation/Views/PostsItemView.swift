@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct PostItemView: View {
     let post: PostsResponse
     let isSaved: Bool
