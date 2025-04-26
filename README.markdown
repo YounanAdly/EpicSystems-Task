@@ -8,6 +8,7 @@
 
 ## 🎥 Video Demo
 Watch a short video demonstration of the app in action:
+
 [![Watch the video](https://img.shields.io/badge/Watch%20Video-Demo-blue)](https://youtu.be/bUggW3xK9ys)
 
 ## 🖥️ Simulator App Demo Video
