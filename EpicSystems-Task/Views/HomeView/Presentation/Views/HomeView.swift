@@ -7,7 +7,6 @@ import SwiftUI
 struct HomeView<ViewModel: HomeViewModelContract>: View {
     
     @StateObject var viewModel: ViewModel
-    @State private var isRefreshing = false
     
     var body: some View {
         content
@@ -15,11 +14,12 @@ struct HomeView<ViewModel: HomeViewModelContract>: View {
             .overlay(emptyStateOverlay)
             .overlay(ErrorAlert(errorMessage: $viewModel.errorMessage))
             .overlay(LoadingOverlayView(isLoading: viewModel.shouldDisplayLoading))
+            .refreshable { viewModel.refreshPosts() }
     }
 }
 
+
 extension HomeView {
-    
     
     // MARK: - Main Navigation View
     var content: some View {
@@ -40,7 +40,7 @@ extension HomeView {
             showsIndicators: false,
             items: viewModel.listOfPosts) { post in
                 PostItemView(post: post)
-                    .opacity(viewModel.shouldDisplayLoading ? 0 : 1) 
+                    .opacity(viewModel.shouldDisplayLoading ? 0 : 1)
             }
             .padding(.top, 12)
             .animatedContent(value: viewModel.listOfPosts)

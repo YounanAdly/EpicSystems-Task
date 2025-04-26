@@ -51,6 +51,13 @@ extension HomeViewModel{
     }
     
     
+    func refreshPosts()  {
+        shouldDisplayLoading = true
+        self.getPosts()
+        shouldDisplayLoading = false
+    }
+    
+    
     // MARK: - NAVIGATION VIEW TITLE
     var navigationTitle: String {
         Localizable.Home.listOfPosts.uppercased()

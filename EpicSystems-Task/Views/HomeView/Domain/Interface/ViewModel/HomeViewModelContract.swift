@@ -9,6 +9,7 @@ typealias HomeViewModelContract = HomeViewModelInput & HomeViewModelOutput
 
 protocol HomeViewModelInput: ObservableObject {
     func getPosts()
+    func refreshPosts()
 }
 
 protocol HomeViewModelOutput: ObservableObject {
