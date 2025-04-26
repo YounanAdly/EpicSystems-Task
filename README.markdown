@@ -6,6 +6,11 @@
 
 **EpicSystems-Task** is a modern iOS application built with SwiftUI, designed to demonstrate best practices in iOS development. The app fetches and displays a list of posts from a remote API, allows users to favorite posts using Core Data for persistence, and provides a seamless user experience with clean architecture and reactive programming.
 
+## 🎥 Video Demo
+Watch a short video demonstration of the app in action:
+
+[![Watch the video](https://img.shields.io/badge/Watch%20Video-Demo-blue)](https://youtu.be/bUggW3xK9ys)
+
 ## 📋 Table of Contents
 - [Features](#features)
 - [Architecture](#architecture)
